@@ -23,7 +23,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/')));
+app.use(express.static(path.join(__dirname, 'public/bower_components/jquery/dist/')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
