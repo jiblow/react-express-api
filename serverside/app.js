@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/')));
+app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/components/')));
 app.use(express.static(path.join(__dirname, 'public/bower_components/jquery/dist/')));
 
 app.use('/', indexRouter);
