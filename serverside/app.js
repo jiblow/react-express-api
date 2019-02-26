@@ -27,6 +27,9 @@ app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/di
 app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/components/')));
 app.use(express.static(path.join(__dirname, 'public/bower_components/jquery/dist/')));
 app.use(express.static(path.join(__dirname, 'public/stylesheets/')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css/')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js/')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/js/dist/')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
