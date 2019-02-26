@@ -1,0 +1,8 @@
+{
+    "allowedExtensions":[".less"],
+    "watchFolder": "src",
+    "outputFolder": "public/stylesheets/",
+    "minifield": true,
+    "sourceMap": false
+
+}
