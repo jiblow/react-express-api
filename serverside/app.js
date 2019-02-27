@@ -5,8 +5,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -45,6 +48,15 @@ app.use(
     saveUninitialized: true
   })
 );
+
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//connect flash
+app.use(flash());
+
+//Setting up static files
 app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/')));
 app.use(express.static(path.join(__dirname, 'public/bower_components/semantic/dist/components/')));
 app.use(express.static(path.join(__dirname, 'public/bower_components/jquery/dist/')));
@@ -52,6 +64,15 @@ app.use(express.static(path.join(__dirname, 'public/stylesheets/')));
 app.use(express.static(path.join(__dirname, 'public/images/')));
 app.use(express.static(path.join(__dirname, 'public/javascripts/')));
 
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+//Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter );
