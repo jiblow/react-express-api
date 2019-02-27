@@ -1,9 +1,13 @@
 @background-color: pink;
-@background-image:("");
+@images: "/login-background.jpg";
 
 body{
-    background:@background-color;  
+    //background:@background-color; 
+    background-image: url("@{images}") ;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
     body>.grid {
         height: 100%;
     }

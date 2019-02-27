@@ -1,5 +1,7 @@
 body {
-  background: pink;
+  background-image: url("/login-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 body > .grid {
   height: 100%;
