@@ -16,7 +16,8 @@ var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 
 var app = express();
-
+//Connecting to Model
+var User =  require('./models/user');
 
 //Setup mongoose connection
 mongoose.connect('mongodb://olatmm82:' + process.env.MONGO_ATLAS_PW + '@cluster0-shard-00-00-klo7p.mongodb.net:27017,cluster0-shard-00-01-klo7p.mongodb.net:27017,cluster0-shard-00-02-klo7p.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',
@@ -28,7 +29,7 @@ mongoose.connect('mongodb://olatmm82:' + process.env.MONGO_ATLAS_PW + '@cluster0
 .catch(err =>console.log(err));
 
 // view engine setup
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir:__dirname + '/views/layouts'}));
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir:__dirname + '/views/layouts', partialsDir:__dirname + '/views/partials/' }));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'hbs');
 
@@ -63,6 +64,7 @@ app.use(express.static(path.join(__dirname, 'public/bower_components/jquery/dist
 app.use(express.static(path.join(__dirname, 'public/stylesheets/')));
 app.use(express.static(path.join(__dirname, 'public/images/')));
 app.use(express.static(path.join(__dirname, 'public/javascripts/')));
+app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css/')));
 
 // Global variables
 app.use(function(req, res, next) {

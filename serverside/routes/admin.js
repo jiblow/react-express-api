@@ -8,5 +8,7 @@ router.get('/', function(req, res, next) {
 router.get('/dashboardlogin', function(req, res, next) {
   res.render('dashboardlogin', {title: 'Login Page'});
 });
-
+router.post('/', function(req,res){
+  res.render('admin');
+});
 module.exports = router;

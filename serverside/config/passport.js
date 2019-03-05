@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var  bcrypt = require('bcryptjs');
 
 // Load User model
-var User = require('../models/User');
+var User = require('../models/user');
 
 module.exports = function(passport) {
   passport.use(
